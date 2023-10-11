@@ -1,40 +1,14 @@
-.DS_Store
 node_modules/
-.vscode-test/
-coverage/
-.nyc_output/
-.idea
-out
-src/**/nodeDebugLocation.json
-nls.*.json
-test/*.xml
-test/resources/projects/*
+.expo/
+dist/
+npm-debug.*
+*.jks
+*.p8
+*.p12
+*.key
+*.mobileprovision
+*.orig.*
+web-build/
 
-# Compiled files
-src/**/*.js
-dist/**
-!src/extension/appcenter/lib/**/*.js
-test/**/*.js
-!test/**/.eslintrc.js
-test/smoke/vscode
-!gulpfile.js
-SmokeTestLogs
-VSCodeUserData
-**/*.js.map
-vscode-react-native-*.vsix
-*-report
-
-# Sample Application auto-generated files
-MeeTBD/.vscode/.react/debuggerWorker.js
-MeeTBD/.vscode/.react/index.android.bundle
-MeeTBD/.vscode/.react/index.android.map
-MeeTBD/.vscode/.react/.vscode/launchReactNative.js
-MeeTBD/android/
-MeeTBD/ios/
-MeeTBD/.flowconfig
-MeeTBD/.gitignore
-MeeTBD/.watchmanconfig
-MeeTBD/.vscode/launchReactNative.js
-MeeTBD/.vscode/settings.json
-MeeTBD/tsconfig.json
-MeeTBD/.vscode/typings/
+# macOS
+.DS_Store
