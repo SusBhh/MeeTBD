@@ -10,6 +10,7 @@ import { useRouter } from "expo-router";
 
 import styles from "./welcome.style";
 import { icons, SIZES } from "../../../constants";
+import SignOutButton from "../../SignOutButton";
 
 
 const Welcome = ({ searchTerm, setSearchTerm, handleClick }) => {
@@ -18,6 +19,7 @@ const Welcome = ({ searchTerm, setSearchTerm, handleClick }) => {
 
     return (
         <View>
+            <SignOutButton/>
             <View style={styles.container}>
                 <Text style={styles.userName}>Hello Adrian</Text>
                 <Text style={styles.welcomeMessage}>Find your perfect job</Text>
