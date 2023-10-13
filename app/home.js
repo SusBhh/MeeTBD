@@ -1,18 +1,22 @@
 import "react-native-gesture-handler";
 import * as React from "react";
+import { ActivityIndicator, Button, View, SafeAreaView } from "react-native";
+import AsyncStorage from "@react-native-async-storage/async-storage";
+
 import * as WebBrowser from "expo-web-browser";
 import * as Google from "expo-auth-session/providers/google";
 import {
+    signInWithRedirect,
+    getAuth,
     GoogleAuthProvider,
     onAuthStateChanged,
     signInWithCredential,
+    getRedirectResult,
 } from "firebase/auth";
 import { auth } from "../firebaseConfig";
-import SignInScreen from "../components/SignInScreen";
-import AsyncStorage from "@react-native-async-storage/async-storage";
-import { ActivityIndicator, View, ScrollView, SafeAreaView } from "react-native";
 import { Stack, useRouter } from 'expo-router';
 
+import SignInScreen from "../components/SignInScreen";
 import { COLORS, icons, images, SIZES } from '../constants';
 import { Welcome, ScreenHeaderBtn } from '../components';
 
@@ -42,9 +46,38 @@ const Home = () => {
 
     React.useEffect(() => {
         if (response?.type === "success") {
-            const { id_token } = response.params;
-            const credential = GoogleAuthProvider.credential(id_token);
-            signInWithCredential(auth, credential);
+            console.log(response);
+            // const { id_token } = response.params;
+            // const credential = GoogleAuthProvider.credential(id_token);
+            // signInWithCredential(auth, credential);
+
+            // const auth = getAuth();
+            const provider = new GoogleAuthProvider();
+            provider.addScope('https://www.googleapis.com/auth/calendar');
+
+            signInWithRedirect(auth, provider);
+
+            getRedirectResult(auth)
+                .then((result) => {
+                    console.log("result", result);
+                    // This gives you a Google Access Token. You can use it to access Google APIs.
+                    const credential = GoogleAuthProvider.credentialFromResult(result);
+                    const token = credential.accessToken;
+
+                    // The signed-in user info.
+                    const user = result.user;
+                    console.log(user);
+                    // IdP data available using getAdditionalUserInfo(result)
+                    // ...
+                }).catch((error) => {
+                    // Handle Errors here.
+                    console.log("error", error);
+                    // The email of the user's account used.
+                    // The AuthCredential type that was used.
+                    const credential = GoogleAuthProvider.credentialFromError(error);
+                    // ...
+                })
+
         }
     }, [response]);
 
@@ -84,7 +117,9 @@ const Home = () => {
                     ),
                 }}
             />
-            {userInfo ? <Welcome /> : <SignInScreen promptAsync={promptAsync} />}
+            {/* {userInfo ? <Welcome /> : <SignInScreen promptAsync={promptAsync} />} */}
+            {userInfo ? <Welcome /> : <Button title="Sign In" onPress={() => promptAsync()}
+            />}
         </SafeAreaView>
     )
 }
