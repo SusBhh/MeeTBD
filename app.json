@@ -8,6 +8,14 @@
       "expo-router"
     ],
     "name": "MeeTBD",
-    "slug": "MeeTBD"
+    "slug": "MeeTBD",
+    "extra": {
+      "router": {
+        "origin": false
+      },
+      "eas": {
+        "projectId": "b2c890e1-2610-46ee-bc56-ff0f9cbec565"
+      }
+    }
   }
 }
