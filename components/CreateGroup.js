@@ -13,6 +13,7 @@ import {
 } from "react-native";
 import { collection, addDoc } from "firebase/firestore";
 import { db } from "../firebaseConfig";
+import { styles } from './../constants/styles'
 
 const CreateGroup = () => {
   const [modalVisible, setModalVisible] = useState(false);
@@ -70,7 +71,7 @@ const CreateGroup = () => {
                   ></TextInput>
                 </View>
                 <Pressable
-                  style={[styles.button, styles.buttonClose]}
+                  style={[styles.buttons, styles.buttonClose]}
                   onPress={() => create()}
                 >
                   <Text style={styles.textStyle}>Submit</Text>
@@ -81,7 +82,7 @@ const CreateGroup = () => {
         </TouchableOpacity>
       </Modal>
       <Pressable
-        style={[styles.button, styles.buttonOpen]}
+        style={[styles.buttons, styles.buttonOpen]}
         onPress={() => setModalVisible(true)}
       >
         <Text style={styles.textStyle}>Create New Group</Text>
@@ -89,55 +90,5 @@ const CreateGroup = () => {
     </View>
   );
 };
-
-const styles = StyleSheet.create({
-  centeredView: {
-    flex: 1,
-    justifyContent: "center",
-    alignItems: "center",
-    marginTop: 22,
-  },
-  modalView: {
-    margin: 20,
-    backgroundColor: "white",
-    borderRadius: 20,
-    padding: 35,
-    alignItems: "center",
-    shadowColor: "#000",
-    shadowOffset: {
-      width: 0,
-      height: 2,
-    },
-    shadowOpacity: 0.25,
-    shadowRadius: 4,
-    elevation: 5,
-  },
-  button: {
-    borderRadius: 20,
-    padding: 10,
-    elevation: 2,
-  },
-  buttonOpen: {
-    backgroundColor: "#F194FF",
-  },
-  buttonClose: {
-    backgroundColor: "#2196F3",
-  },
-  input: {
-    height: 40,
-    margin: 12,
-    borderWidth: 1,
-    padding: 10,
-  },
-  textStyle: {
-    color: "white",
-    fontWeight: "bold",
-    textAlign: "center",
-  },
-  modalText: {
-    marginBottom: 15,
-    textAlign: "center",
-  },
-});
 
 export default CreateGroup;
