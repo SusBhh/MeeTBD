@@ -1,0 +1,16 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\components",
+    "\\components\\common",
+    "\\components\\common\\cards",
+    "\\components\\common\\cards\\nearby",
+    "\\components\\common\\cards\\popular",
+    "\\components\\common\\header",
+    "\\components\\home",
+    "\\components\\home\\welcome",
+    "\\constants"
+  ],
+  "SelectedNode": "\\.gitignore",
+  "PreviewInSolutionExplorer": false
+}
