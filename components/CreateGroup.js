@@ -11,7 +11,7 @@ import {
   ScrollView,
   View,
 } from "react-native";
-import { doc, setDoc } from "firebase/firestore";
+import { collection, addDoc } from "firebase/firestore";
 import { db } from "../firebaseConfig";
 
 const CreateGroup = () => {
@@ -19,11 +19,15 @@ const CreateGroup = () => {
   const [groupName, setGroupName] = useState("");
   const [description, setDescription] = useState("");
 
-  function create() {
-    setDoc(doc(db, "groups", "testing1 "), {
-      description: description,
-      groupName: groupName,
-    });
+  async function create() {
+    if (groupName !== "") {
+      await addDoc(collection(db, "groups"), {
+        groupName,
+        description,
+      });
+      setGroupName("");
+      setDescription("");
+    }
     setModalVisible(!modalVisible);
   }
   return (
