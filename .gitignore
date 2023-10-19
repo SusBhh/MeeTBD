@@ -14,3 +14,6 @@ firebaseConfig.js
 
 # macOS
 .DS_Store
+
+# local env files
+.env*.local
