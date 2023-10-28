@@ -20,6 +20,7 @@ const CreateGroup = () => {
   const [description, setDescription] = useState("");
 
   async function create() {
+    // TODO: add users list and auto add self to list
     if (groupName !== "") {
       await addDoc(collection(db, "groups"), {
         groupName,

@@ -13,7 +13,6 @@ import { db } from "../firebaseConfig";
 import Group from "./Group";
 
 export default function Groups() {
-  const [loading, setLoading] = React.useState(false);
   const [groups, setGroups] = React.useState([]);
 
   React.useEffect(() => {
@@ -24,13 +23,9 @@ export default function Groups() {
         groupsArray.push({ ...doc.data(), id: doc.id });
       });
       setGroups(groupsArray);
-      console.log(groups);
     });
     return () => unsub();
   }, []);
-
-  console.log(groups);
-  console.log(groups.length);
 
   return (
     <ScrollView>
