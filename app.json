@@ -4,6 +4,13 @@
     "web": {
       "bundler": "metro"
     },
+    "ios": {
+      "supportsTablet": true,
+      "bundleIdentifier": "com.meeTBD"
+    },
+    "android": {
+      "package": "com.meeTBD"
+    },
     "plugins": [
       "expo-router"
     ],
