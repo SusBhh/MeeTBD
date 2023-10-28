@@ -14,11 +14,9 @@ import { collection, addDoc } from "firebase/firestore";
 import { db } from "../firebaseConfig";
 import { styles } from "./../constants/styles";
 
-const CreateGroup = ({userEmail}) => {
+const CreateGroup = ({ userEmail }) => {
   const [modalVisible, setModalVisible] = useState(false);
   const [groupName, setGroupName] = useState("");
-  const [description, setDescription] = useState("");
-
 
   async function handleCreate() {
     if (groupName !== "") {
@@ -27,11 +25,9 @@ const CreateGroup = ({userEmail}) => {
       await addDoc(collection(db, "groups"), {
         owner,
         groupName,
-        description,
         members,
       });
       setGroupName("");
-      setDescription("");
     }
     setModalVisible(!modalVisible);
   }
@@ -65,14 +61,6 @@ const CreateGroup = ({userEmail}) => {
                       setGroupName(groupName);
                     }}
                     placeholder="Group Name"
-                  ></TextInput>
-                  <TextInput
-                    style={styles.input}
-                    value={description}
-                    onChangeText={(description) => {
-                      setDescription(description);
-                    }}
-                    placeholder="Description"
                   ></TextInput>
                 </View>
                 <Pressable

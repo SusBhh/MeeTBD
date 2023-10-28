@@ -14,8 +14,6 @@ export default function Groups({ userEmail }) {
       const unsub = onSnapshot(q, (querySnapshot) => {
         let groupsArray = [];
         querySnapshot.forEach((doc) => {
-          console.log(userEmail);
-          console.log(doc.data());
           if (userEmail && doc.data().members.includes(userEmail)) {
             groupsArray.push({ ...doc.data(), id: doc.id });
           }
