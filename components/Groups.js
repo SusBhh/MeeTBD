@@ -1,5 +1,5 @@
 import * as React from "react";
-import { View, Text } from "react-native";
+import { ActivityIndicator, ScrollView, View, Text } from "react-native";
 import {
   collection,
   query,
@@ -10,7 +10,10 @@ import {
 } from "firebase/firestore";
 import { db } from "../firebaseConfig";
 
+import Group from "./Group";
+
 export default function Groups() {
+  const [loading, setLoading] = React.useState(false);
   const [groups, setGroups] = React.useState([]);
 
   React.useEffect(() => {
@@ -21,15 +24,23 @@ export default function Groups() {
         groupsArray.push({ ...doc.data(), id: doc.id });
       });
       setGroups(groupsArray);
+      console.log(groups);
     });
     return () => unsub();
   }, []);
 
+  console.log(groups);
+  console.log(groups.length);
+
   return (
-    <View>
-      {groups.map((group, i) => (
-        <Text key={i}> {group.groupName} </Text>
-      ))}
-    </View>
+    <ScrollView>
+      {groups.length == 0 ? (
+        <ActivityIndicator />
+      ) : (
+        <View>
+          {groups.map((group, i) => <Group group={group} key={group.id} />)}
+        </View>
+      )}
+    </ScrollView>
   );
 }

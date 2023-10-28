@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import {
   Alert,
   Modal,
-  StyleSheet,
   Text,
   TextInput,
   TouchableOpacity,
