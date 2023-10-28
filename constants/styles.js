@@ -58,8 +58,15 @@ const styles = StyleSheet.create({
     marginBottom: 15,
     textAlign: "center",
   },
+  groupScreen: {
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center",
+    justifyContent: "space-between",
+  },
   group: {
     backgroundColor: "#f9c2ff",
+    borderRadius: 4,
     padding: 10,
     marginVertical: 3,
     marginHorizontal: 16,
