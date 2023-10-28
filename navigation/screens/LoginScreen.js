@@ -114,7 +114,7 @@ const LoginScreen = () => {
     const router = useRouter();
     return (
         <View style={{ flex: 1, backgroundColor: COLORS.lightWhite }}>
-            <Button title="delete local storage" onPress={() => AsyncStorage.removeItem("@user")}></Button>
+            {/*<Button title="delete local storage" onPress={() => AsyncStorage.removeItem("@user")}></Button>*/}
             {userInfo ? <Menu /> : <SignInScreen promptAsync={promptAsync} />}
             <StatusBar style="auto" />
         </View>
