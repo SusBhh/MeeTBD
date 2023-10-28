@@ -22,8 +22,8 @@ export default function Group({ group }) {
 
   return (
     <View style={styles.group}>
-      <Text>
-        {group.groupName}
+      <Text>{group.groupName}</Text>
+      <View style={styles.groupIcons}>
         <Image
           style={styles.groupIcon}
           source={require("../constants/edit.png")}
@@ -32,7 +32,7 @@ export default function Group({ group }) {
           style={styles.groupIcon}
           source={require("../constants/delete.png")}
         />
-      </Text>
+      </View>
     </View>
   );
 }

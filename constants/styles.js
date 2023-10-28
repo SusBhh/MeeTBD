@@ -63,6 +63,13 @@ const styles = StyleSheet.create({
     padding: 10,
     marginVertical: 3,
     marginHorizontal: 16,
+    display: "flex",
+    flexDirection: "row",
+    justifyContent: "space-between",
+  },
+  groupIcons: {
+    display: "flex",
+    flexDirection: "row",
   },
   groupIcon: {
     width: 20,
@@ -70,4 +77,5 @@ const styles = StyleSheet.create({
     alignSelf: "flex-end",
   },
 });
+
 export { styles };
