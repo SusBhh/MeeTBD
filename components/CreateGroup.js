@@ -12,25 +12,30 @@ import {
 } from "react-native";
 import { collection, addDoc } from "firebase/firestore";
 import { db } from "../firebaseConfig";
-import { styles } from './../constants/styles'
+import { styles } from "./../constants/styles";
 
-const CreateGroup = () => {
+const CreateGroup = ({userEmail}) => {
   const [modalVisible, setModalVisible] = useState(false);
   const [groupName, setGroupName] = useState("");
   const [description, setDescription] = useState("");
 
-  async function create() {
-    // TODO: add users list and auto add self to list
+
+  async function handleCreate() {
     if (groupName !== "") {
+      owner = userEmail;
+      members = [userEmail];
       await addDoc(collection(db, "groups"), {
+        owner,
         groupName,
         description,
+        members,
       });
       setGroupName("");
       setDescription("");
     }
     setModalVisible(!modalVisible);
   }
+
   return (
     <View style={styles.centeredView}>
       <Modal
@@ -72,7 +77,7 @@ const CreateGroup = () => {
                 </View>
                 <Pressable
                   style={[styles.buttons, styles.buttonClose]}
-                  onPress={() => create()}
+                  onPress={() => handleCreate()}
                 >
                   <Text style={styles.textStyle}>Submit</Text>
                 </Pressable>

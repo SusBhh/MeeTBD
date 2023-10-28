@@ -17,7 +17,7 @@ import {
 import { db } from "../firebaseConfig";
 import { styles } from "./../constants/styles";
 
-export default function Group({ group }) {
+export default function Group({ group, userEmail }) {
   const [modalVisible, setModalVisible] = useState(false);
   const [newGroupName, setNewGroupName] = useState(group.groupName);
 
@@ -75,7 +75,7 @@ export default function Group({ group }) {
       </Modal>
 
       <View style={styles.group}>
-        <Text>{group.groupName}</Text>
+        <Text style={styles.groupText}>{group.groupName}</Text>
         <View style={styles.groupIcons}>
           <Pressable onPress={() => setModalVisible(true)}>
             <Image

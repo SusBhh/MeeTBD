@@ -67,6 +67,9 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "space-between",
   },
+  groupText: {
+    paddingRight: 8,
+  },
   groupIcons: {
     display: "flex",
     flexDirection: "row",
