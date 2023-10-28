@@ -7,6 +7,7 @@ import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityI
 import HomeScreen from './screens/HomeScreen';
 import GroupsScreen from './screens/GroupsScreen';
 import ProfileScreen from './screens/ProfileScreen';
+import AppNavigation from './AppNavigation';
 
 //Screen names
 const homeName = "Home";
@@ -15,9 +16,11 @@ const profileName = "Profile";
 
 const Tab = createBottomTabNavigator();
 import { NavigationContainer } from '@react-navigation/native';
+
 function Menu() {
     return (
         <NavigationContainer independent={true}>
+            <AppNavigation />
             <Tab.Navigator
                 initialRouteName={homeName}
                 screenOptions={({ route }) => ({
