@@ -1,10 +1,22 @@
 import React, { useState } from "react";
-import { View, Text, Image } from "react-native";
-
+import { View, Text, Image, Pressable } from "react-native";
+import {
+  collection,
+  query,
+  onSnapshot,
+  doc,
+  updateDoc,
+  deleteDoc,
+} from "firebase/firestore";
+import { db } from "../firebaseConfig";
 import { styles } from "./../constants/styles";
 
 export default function Group({ group }) {
-  const [newTitle, setNewTitle] = useState(group.groupName);
+  const [newGroupName, setNewGroupName] = useState(group.groupName);
+
+  const handleEdit = async (group, newGroupName) => {
+    await updateDoc(doc(db, "groups", group.id), { groupName: newGroupName });
+  };
 
   const handleDelete = async (id) => {
     await deleteDoc(doc(db, "groups", id));
@@ -24,14 +36,18 @@ export default function Group({ group }) {
     <View style={styles.group}>
       <Text>{group.groupName}</Text>
       <View style={styles.groupIcons}>
-        <Image
-          style={styles.groupIcon}
-          source={require("../constants/edit.png")}
-        />
-        <Image
-          style={styles.groupIcon}
-          source={require("../constants/delete.png")}
-        />
+        <Pressable onPress={() => handleEdit(group, newGroupName)}>
+          <Image
+            style={styles.groupIcon}
+            source={require("../constants/edit.png")}
+          />
+        </Pressable>
+        <Pressable onPress={() => handleDelete(group.id)}>
+          <Image
+            style={styles.groupIcon}
+            source={require("../constants/delete.png")}
+          />
+        </Pressable>
       </View>
     </View>
   );
