@@ -7,7 +7,7 @@ export default function HomeScreen() {
             <Text
                 style={{ fontSize: 26, fontWeight: 'bold' }}>My Availability</Text>
             <Button
-                style={styles.buttons}
+                style={styles.button}
                 title="Automatically Fill in Using Google Calendar"
                 color="#ecdff4"
                 accessibilityLabel="Learn more about this purple button"

@@ -63,10 +63,10 @@ export default function Group({ group, userEmail }) {
                   ></TextInput>
                 </View>
                 <Pressable
-                  style={[styles.buttons, styles.buttonClose]}
+                  style={[styles.button, styles.buttonClose]}
                   onPress={() => handleEdit(group.id, newGroupName)}
                 >
-                  <Text style={styles.textStyle}>Submit</Text>
+                  <Text style={styles.button}>Submit</Text>
                 </Pressable>
               </View>
             </View>

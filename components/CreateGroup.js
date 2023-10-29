@@ -53,7 +53,7 @@ const CreateGroup = ({ userEmail }) => {
             <View style={styles.centeredView}>
               <View style={styles.modalView}>
                 <View>
-                  <Text>Make new group here</Text>
+                  <Text style={styles.centerText}>Make new group here</Text>
                   <TextInput
                     style={styles.input}
                     value={groupName}
@@ -64,10 +64,10 @@ const CreateGroup = ({ userEmail }) => {
                   ></TextInput>
                 </View>
                 <Pressable
-                  style={[styles.buttons, styles.buttonClose]}
+                  style={[styles.button, styles.buttonClose]}
                   onPress={() => handleCreate()}
                 >
-                  <Text style={styles.textStyle}>Submit</Text>
+                  <Text style={styles.button}>Submit</Text>
                 </Pressable>
               </View>
             </View>
@@ -75,10 +75,10 @@ const CreateGroup = ({ userEmail }) => {
         </TouchableOpacity>
       </Modal>
       <Pressable
-        style={[styles.buttons, styles.buttonOpen]}
+        style={[styles.button, styles.buttonOpen]}
         onPress={() => setModalVisible(true)}
       >
-        <Text style={styles.textStyle}>Create New Group</Text>
+        <Text style={styles.button}>Create New Group</Text>
       </Pressable>
     </View>
   );

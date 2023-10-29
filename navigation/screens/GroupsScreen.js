@@ -28,7 +28,6 @@ export default function GroupsScreen() {
       console.log("error while updating group: " + groupID);
     }
 
-    setModalVisible(false);
     setGroupID("");
   };
 
@@ -57,8 +56,8 @@ export default function GroupsScreen() {
         <View style={styles.groupScreen}>
           <Groups userEmail={userEmail} />
 
-          <View>
-            <Text>Join an Existing Group by ID</Text>
+          <View style={styles.addGroupView}>
+            <Text style={styles.centerText}>Join an Existing Group by ID</Text>
             <TextInput
               style={styles.input}
               value={groupID}
@@ -68,13 +67,12 @@ export default function GroupsScreen() {
               placeholder="Group ID here"
             ></TextInput>
             <Pressable
-              style={[styles.buttons, styles.buttonClose]}
+              style={[styles.button, styles.buttonClose]}
               onPress={() => handleJoin()}
             >
-              <Text style={styles.textStyle}>Join</Text>
+              <Text style={styles.button}>Join</Text>
             </Pressable>
-
-            <Text>or</Text>
+            <Text style={styles.centerText}>or</Text>
             <CreateGroup userEmail={userEmail} />
           </View>
         </View>

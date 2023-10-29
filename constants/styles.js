@@ -8,19 +8,27 @@ const styles = StyleSheet.create({
     padding: 3,
     margin: 3,
   },
-  buttons: {
-    color: "#ffffff",
-    backgroundColor: "#ecdff4",
+  button: {
     borderRadius: 10,
-    padding: 3,
-    margin: 3,
-    elevation: 2,
+    color: "white",
+    fontWeight: "bold",
+    textAlign: "center",
+    paddingVertical: 3,
+    paddingHorizontal: 6,
+  },
+  buttonOpen: {
+    backgroundColor: "#F194FF",
+  },
+  buttonClose: {
+    backgroundColor: "#2196F3",
+  },
+  centerText: {
+    textAlign: "center",
   },
   centeredView: {
     flex: 1,
     justifyContent: "center",
     alignItems: "center",
-    marginTop: 22,
   },
   modalView: {
     margin: 20,
@@ -37,26 +45,26 @@ const styles = StyleSheet.create({
     shadowRadius: 4,
     elevation: 5,
   },
-  buttonOpen: {
-    backgroundColor: "#F194FF",
-  },
-  buttonClose: {
-    backgroundColor: "#2196F3",
-  },
   input: {
+    backgroundColor: "#F5F5F5",
+    borderColor: "#f9c2ff",
+    borderRadius: 10,
+    borderWidth: 2,
     height: 40,
     margin: 12,
-    borderWidth: 1,
     padding: 10,
-  },
-  textStyle: {
-    color: "white",
-    fontWeight: "bold",
-    textAlign: "center",
   },
   modalText: {
     marginBottom: 15,
     textAlign: "center",
+  },
+  addGroupView: {
+    borderColor: "#f9c2ff",
+    borderWidth: 3,
+    backgroundColor: "#E6E6E6",
+    borderRadius: 20,
+    paddingVertical: 8,
+    paddingHorizontal: 20,
   },
   groupScreen: {
     display: "flex",
