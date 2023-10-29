@@ -2,13 +2,8 @@ import "react-native-gesture-handler";
 import * as React from "react";
 import * as WebBrowser from "expo-web-browser";
 import * as Google from "expo-auth-session/providers/google";
-
-import {
-    GoogleAuthProvider,
-    onAuthStateChanged,
-    signInWithCredential,
-} from "firebase/auth";
-
+import { db } from "../../firebaseConfig";
+import 'firebase/firestore';
 import Menu from "../Menu"
 import { auth } from "../../firebaseConfig";
 import SignInScreen from "../../components/SignInScreen";
@@ -37,16 +32,20 @@ const LoginScreen = () => {
     React.useEffect(() => {
         handleSignInWithGoogle();
     }, [response])
+    //Store the access token in Firestore
+
     async function handleSignInWithGoogle() {
         const user = await AsyncStorage.getItem("@user");
         if (!user) {
             if (response?.type === "success") {
                 await getUserInfo(response.authentication.accessToken);
+
             }
             else {
                 setUserInfo(JSON.parse(user));
             }
         }
+
     }
 
     const getUserInfo = async (token) => {
@@ -114,7 +113,7 @@ const LoginScreen = () => {
     const router = useRouter();
     return (
         <View style={{ flex: 1, backgroundColor: COLORS.lightWhite }}>
-            {/*<Button title="delete local storage" onPress={() => AsyncStorage.removeItem("@user")}></Button>*/}
+            <Button title="delete local storage" onPress={() => AsyncStorage.removeItem("@user")}></Button>
             {userInfo ? <Menu /> : <SignInScreen promptAsync={promptAsync} />}
             <StatusBar style="auto" />
         </View>
